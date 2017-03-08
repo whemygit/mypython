@@ -1,12 +1,2 @@
 # mypython
 pythontest
-# create respority and clone
-git clone  https://github.com/whemygit/mypython.git
-
-# add
-git add *
-
-# commit
-git commit -m "biezhu"
-#push
-git push
