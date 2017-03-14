@@ -1,0 +1,24 @@
+
+
+len(a):139750
+extact(content) len(tag):8394
+
+len(a):139750
+extact(a) len(tag):8343
+
+
+len(b):29400
+extact(content) len(tag):8394
+
+len(b):29400
+extact(b) len(tag):8215
+
+
+stopw 一片
+len(b):29397
+extact(b) len(tag):8214
+
+
+stopw 增加停用词
+len(b):28291
+extact(b) len(tag):7773
