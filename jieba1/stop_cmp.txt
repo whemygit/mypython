@@ -22,3 +22,22 @@ extact(b) len(tag):8214
 stopw ‘ˆº”Õ£”√¥ 
 len(b):28291
 extact(b) len(tag):7773
+
+
+util.content_extract("news_res.txt", False)
+139750
+8394
+
+
+util.content_extract("news_from_json.txt", False)
+140914
+8392
+
+util.seg_extract("news_res.txt", False)
+139750
+8343
+
+
+util.seg_outstop_extract("news_res.txt", False)
+108620
+7773
