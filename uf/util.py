@@ -88,3 +88,24 @@ def seg_outstop_extract(filename,withWeight=True):
             print tag
         elif withWeight == True:
             print("tag: %s\t\t weight: %f" % (tag[0], tag[1]))
+
+
+
+#对每篇提取关键词
+def each_news_seg_extract(filename,defilename):
+    f=open(filename,"rb")
+    lines=f.readlines()
+
+
+    for line in lines:
+        seg_list=jieba.cut(line,cut_all=False)
+        a=",".join(seg_list)
+        tags = jieba.analyse.extract_tags(a, topK=len(a), withWeight=False)
+        keywd = " ".join([w for w in tags])
+        df=open(defilename, 'a')
+        df.write(keywd+"\n")
+        df.close()
+
+
+
+

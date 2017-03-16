@@ -75,3 +75,4 @@ with open(output_file, 'w') as f:
 # print(list(enumerate(sims)))
 
 
+help(models.ldamodel.LdaModel)
