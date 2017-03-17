@@ -46,7 +46,7 @@ def lda_topic_tf(infile,n_topics=2):
         #     for j in range(len(word)):
         #         print weight[i][j],
         #     print '\n'
-        # print len(weight)
+        print len(weight)
         # print (weight[:5, :5])
         #
         # #打印特征向量文本内容
@@ -62,12 +62,14 @@ def lda_topic_tf(infile,n_topics=2):
         import lda.datasets
         model = lda.LDA(n_topics=n_topics, n_iter=500, random_state=1)
         model.fit(np.asarray(weight))  # model.fit_transform(X) is also available
+        # print np.shape(np.asarray(weight))                                             # 权重矩阵的shape
         topic_word = model.topic_word_  # model.components_ also works
 
         # 输出主题中的TopN关键词
         word = vectorizer.get_feature_names()
-        for w in word:
-            print w
+        # print len(word)
+        # for w in word:
+        #     print w
         print topic_word[:, :3]
         n = 10
         for i, topic_dist in enumerate(topic_word):
@@ -86,19 +88,19 @@ def lda_topic_tf(infile,n_topics=2):
             label.append(topic_most_pr)
             print("doc: {} topic: {}".format(n, topic_most_pr))
 
-        # 计算文档主题分布图
-        import matplotlib.pyplot as plt
-        f, ax = plt.subplots(10, 1, figsize=(8, 8), sharex=True)
-        for i, k in enumerate([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]):
-            ax[i].stem(doc_topic[k, :], linefmt='r-',
-                       markerfmt='ro', basefmt='w-')
-            ax[i].set_xlim(-1, 2)  # x坐标下标
-            ax[i].set_ylim(0, 1.2)  # y坐标下标
-            ax[i].set_ylabel("Prob")
-            ax[i].set_title("Document {}".format(k))
-        ax[5].set_xlabel("Topic")
-        plt.tight_layout()
-        plt.show()
+        # # 计算文档主题分布图
+        # import matplotlib.pyplot as plt
+        # f, ax = plt.subplots(10, 1, figsize=(8, 8), sharex=True)
+        # for i, k in enumerate([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]):
+        #     ax[i].stem(doc_topic[k, :], linefmt='r-',
+        #                markerfmt='ro', basefmt='w-')
+        #     ax[i].set_xlim(-1, 2)  # x坐标下标
+        #     ax[i].set_ylim(0, 1.2)  # y坐标下标
+        #     ax[i].set_ylabel("Prob")
+        #     ax[i].set_title("Document {}".format(k))
+        # ax[5].set_xlabel("Topic")
+        # plt.tight_layout()
+        # plt.show()
 
 
 
