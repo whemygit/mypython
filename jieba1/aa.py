@@ -6,16 +6,18 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 if __name__ == '__main__':
     pass
-#!/usr/bin/python
-#coding:utf-8
+# !/usr/bin/python
+# coding:utf-8
 import sys
+
 reload(sys)
 sys.setdefaultencoding("utf8")
 import jieba
 from gensim import corpora, models
 
+
 def get_stop_words_set(file_name):
-    with open(file_name,'r') as file:
+    with open(file_name, 'r') as file:
         return set([line.strip() for line in file])
 
 
@@ -48,13 +50,11 @@ if __name__ == '__main__':
         for pattern in lda.show_topics():
             print >> f, "%s" % str(pattern)
 
-
-
-
 import logging
+
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-from gensim import corpora, models, similarities
+from gensim import models, similarities
 
 corpus = [[(0, 1.0), (1, 1.0), (2, 1.0)],
           [(2, 1.0), (3, 1.0), (4, 1.0), (5, 1.0), (6, 1.0), (8, 1.0)],
