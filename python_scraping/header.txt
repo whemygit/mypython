@@ -1,0 +1,13 @@
+Accept:application/json, text/javascript, */*; q=0.01
+Accept-Encoding:gzip, deflate, br
+Accept-Language:zh-CN,zh;q=0.8
+Connection:keep-alive
+Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+Cookie:user_trace_token=20170408144329-bc8877287644418891090fb5beefda55; LGUID=20170408144330-ad501010-1c26-11e7-9d67-5254005c3644; index_location_city=%E5%8C%97%E4%BA%AC; JSESSIONID=974D39FC3FAD97F620C4480E617FF96C; _gat=1; LGSID=20170408215544-0f9a7683-1c63-11e7-9d7b-5254005c3644; PRE_UTM=; PRE_HOST=www.sogou.com; PRE_SITE=https%3A%2F%2Fwww.sogou.com%2Flink%3Furl%3DDSOYnZeCC_qqU75nxClpCQDydjxbYhws%26query%3D%25E6%258B%2589%25E5%258B%25BE%25E7%25BD%2591; PRE_LAND=https%3A%2F%2Fwww.lagou.com%2F; LGRID=20170408215544-0f9a7834-1c63-11e7-9d7b-5254005c3644; Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1491633819,1491634078,1491642488,1491659754; Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1491659754; _ga=GA1.2.401448176.1491633819; TG-TRACK-CODE=index_search; SEARCH_ID=2942b89f1ca44d4cb867e352ddd2320f
+Host:www.lagou.com
+Origin:https://www.lagou.com
+Referer:https://www.lagou.com/jobs/list_python?labelWords=&fromSearch=true&suginput=
+User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+X-Anit-Forge-Code:0
+X-Anit-Forge-Token:None
+X-Requested-With:XMLHttpRequest

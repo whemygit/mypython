@@ -1,0 +1,15 @@
+positionName=python高级开发工程师,companyFullName=北京蜜莱坞网络科技有限公司,companySize=500-2000人,positionAdvantage=一线牛人,千万量级,高福利待遇,扁平化,salary=26k-33k,workYear=3-5年
+positionName=Python工程师,companyFullName=北京谱思科技有限公司,companySize=50-150人,positionAdvantage=五险一金,免费健身,年底双薪,弹性工作,salary=15k-20k,workYear=1-3年
+positionName=Python研发工程师,companyFullName=掌阅科技股份有限公司,companySize=500-2000人,positionAdvantage=行业第一，app日活1500+,17年上市,salary=18k-25k,workYear=1-3年
+positionName=Python开发工程师,companyFullName=北京智融时代科技有限公司,companySize=150-500人,positionAdvantage=文化开放,弹性不打卡,发展快速,上升空间,salary=20k-40k,workYear=3-5年
+positionName=Python,companyFullName=北京智慧能源网络科技有限公司,companySize=15-50人,positionAdvantage=六险一金 扁平化管理 领导nice 谢绝打工,salary=10k-20k,workYear=1-3年
+positionName=爬虫工程师(python)--急招,companyFullName=北京原始会投资管理有限公司,companySize=50-150人,positionAdvantage=福利待遇好,提升空间大,金融热门,高速发展,salary=15k-30k,workYear=不限
+positionName=python开发工程师,companyFullName=北京云途腾科技有限责任公司,companySize=50-150人,positionAdvantage=五险一金 地铁门口 各种补助,salary=15k-30k,workYear=1-3年
+positionName=Python开发工程师,companyFullName=北京步鼎方舟科技有限公司,companySize=150-500人,positionAdvantage=一日三餐、团建、六险一金、生日会、下午茶,salary=10k-18k,workYear=1-3年
+positionName=Python研发工程师,companyFullName=北京数美时代科技有限公司,companySize=150-500人,positionAdvantage=大牛如云,技术氛围,大佬领投,股份期权,salary=15k-30k,workYear=1-3年
+positionName=Python开发,companyFullName=普信恒业科技发展（北京）有限公司,companySize=2000人以上,positionAdvantage=核心业务,技术主导,弹性工时,全栈文化,salary=15k-30k,workYear=3-5年
+positionName=python开发工程师,companyFullName=北京车势科技有限公司,companySize=15-50人,positionAdvantage=办理工作居住证、待遇好、环境好、国际化,salary=18k-25k,workYear=3-5年
+positionName=python,companyFullName=北京好巧国际旅行社有限公司,companySize=50-150人,positionAdvantage=带薪年假,五险一金,弹性工作,股票期权,salary=25k-35k,workYear=3-5年
+positionName=Python开发,companyFullName=北京闪银奇异科技有限公司,companySize=150-500人,positionAdvantage=六险一金,免费自助餐,技术大咖,丰厚年终奖,salary=10k-20k,workYear=1-3年
+positionName=Python工程师,companyFullName=成都玩者天下网络技术有限公司,companySize=150-500人,positionAdvantage=重要项目,核心团队,弹性工作,福利完善,salary=18k-30k,workYear=1-3年
+positionName=Python研发工程师,companyFullName=北京好赞移动科技有限公司,companySize=150-500人,positionAdvantage=福利待遇佳,工作氛围好,发展空间大,salary=20k-40k,workYear=1-3年
