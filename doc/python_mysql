@@ -1,0 +1,10 @@
+# python install mysql
+pip install mysql
+pip install wheel
+pip install MySQL_python-1.2.5-cp27-none-win_amd64.whl
+http://www.lfd.uci.edu/~gohlke/pythonlibs/#mysql-python
+下载：MySQL_python-1.2.5-cp27-none-win_amd64.whl
+pip install mysql -------success!!!!!!!!!
+
+python pip包下载url
+https://pypi.python.org/pypi
