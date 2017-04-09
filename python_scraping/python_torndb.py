@@ -30,16 +30,10 @@ def mysql_connect():
 
 
 
-#从指定表选择指定字段内容,并将循环中每次读取结果汇总为列表
-def mysql_read(tableName,labelName):
-    db=mysql_connect()
-    sql='select * from '+tableName
-    res=db.query(sql)
-    pos_label=[]
-    for pos in res:
-        pos_label.append(pos[labelName])
-    return pos_label
 
 
-
-mysql_read('position','positionName')
+db=mysql_connect()
+sql='select * from news_data where id=29'
+res=db.query(sql)
+print res[0].get('newsTitle')
+print res[0].get('newsContent')

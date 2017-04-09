@@ -59,6 +59,18 @@ def get_position_res(url,pn,kd):
             fw.write(search_r+'\n')
     db.close()
 
+#从指定表选择指定字段内容,并将循环中每次读取结果汇总为列表
+def mysql_read(tableName,labelName):
+    db=mysql_connect()
+    sql='select * from '+tableName
+    res=db.query(sql)
+    pos_label=[]
+    for pos in res:
+        pos_label.append(pos[labelName])
+    return pos_label
+
+
+
 
 
 
@@ -71,3 +83,6 @@ if __name__ == '__main__':
     for pn in xrange(10):
         get_position_res(url,pn,'python')
 
+
+    #从mysql读取
+    # mysql_read('position','positionName')
