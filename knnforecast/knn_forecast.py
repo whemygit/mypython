@@ -75,22 +75,33 @@ def knn_classify(inX,trainSet,trainLabels,k):
     num_max_label=sortedClassCount[0][0]                            #最频繁的项集的标签名
     num_max_num=sortedClassCount[0][1]                              #最频繁的项集的数量
     num_max_num_percent = float(sortedClassCount[0][1])/k                   # 最频繁的项集的数量占比
-    print 'in the k nearest neighbors, label ',num_max_label,' is the most one, its number is ',num_max_num,' and its percentage is up to ',num_max_num_percent
+    # print 'in the k nearest neighbors, label ',num_max_label,' is the most one, its number is ',num_max_num,' and its percentage is up to ',num_max_num_percent
     return num_max_label,num_max_num,num_max_num_percent                                #返回最频繁的项集的标签类别
 
 def main():
-    train_data, train_label = get_trainset('mdclose.csv', 10)
-    trainIndex, testIndex = get_rand_testIndex(train_data)
-    trainMat=[];labelList=[]
-    for i in trainIndex:
-        trainMat.append(train_data[i])
-        labelList.append(train_label[i])
-    right_count=0
-    for j in testIndex:
-        num_max_label, num_max_num, num_max_num_percent=knn_classify(train_data[j], array(trainMat), array(labelList), 10)
-        if num_max_label==train_label[j]:
-            right_count+=1
-    print 'the rigth rate is: ',float(right_count)/len(testIndex)
+    period_avg_right_rate={}
+    for periods in range(2,20):                                                      #滞后期长度循环
+        train_data, train_label = get_trainset('mdclose.csv', periods)
+        right_rate_list=[]
+        for t in range(10):                                                          #随机选取样本，交叉验证次数循环
+            trainIndex, testIndex = get_rand_testIndex(train_data)
+            trainMat=[];labelList=[]
+            for i in trainIndex:
+                trainMat.append(train_data[i])
+                labelList.append(train_label[i])
+            right_count=0
+            for j in testIndex:
+                num_max_label, num_max_num, num_max_num_percent=knn_classify(train_data[j], array(trainMat), array(labelList), 10)
+                if num_max_label==train_label[j]:
+                    right_count+=1
+            # print 'the rigth rate is: ',float(right_count)/len(testIndex)
+            right_rate_list.append(float(right_count)/len(testIndex))
+        avg_right_rate=mean(right_rate_list)
+        print 'in condition of ',periods,' the average right rate is: ',avg_right_rate
+        period_avg_right_rate[periods]=avg_right_rate
+    sortedPeravgRate=sorted(period_avg_right_rate.iteritems(),key=operator.itemgetter(1),reverse=True)
+    print sortedPeravgRate
+    return sortedPeravgRate
 
 
 

@@ -41,7 +41,7 @@ def file2dit(filepath):
 def get_position_res(url,pn,kd):
     db=python_torndb.mysql_connect()
     html=requests.post(url,data=get_data(pn,kd),headers=file2dit('header.txt'))
-    with open('D://myfile/position','a') as fw:
+    with open('position','a') as fw:
         html_jsObj=json.loads(html.text)
         result=html_jsObj['content']['positionResult']['result']
         for pos_inf in result:
@@ -61,7 +61,7 @@ def get_position_res(url,pn,kd):
 
 #从指定表选择指定字段内容,并将循环中每次读取结果汇总为列表
 def mysql_read(tableName,labelName):
-    db=mysql_connect()
+    db=python_torndb.mysql_connect()
     sql='select * from '+tableName
     res=db.query(sql)
     pos_label=[]
