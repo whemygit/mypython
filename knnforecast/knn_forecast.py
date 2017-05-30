@@ -5,6 +5,7 @@ import csv
 import numpy as np
 from numpy import *
 import operator
+import tushare as ts
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -18,7 +19,7 @@ def csvfile2list(filename):
     row_array_data=np.array(row_array_data)
     return row_array_data
 
-def get_trainset(filename,n):
+def get_trainset_csv(filename,n):
     '''
 
     :param filename: 读取的文件路径及文件名称
@@ -26,6 +27,32 @@ def get_trainset(filename,n):
     :return: 包括自变量和因变量的训练样本，矩阵为n列的自变量，向量为标签因变量
     '''
     row_data=csvfile2list('mdclose.csv')
+    data_len=len(row_data)
+    train_len=data_len-n
+    dataset=np.zeros((train_len,n+1))
+    for i in range(train_len):
+        dataset[i]=row_data[i:i+n+1]
+    train_data=dataset[:,0:dataset.shape[1]-1]
+    train_label=[]
+    for i in dataset[:,dataset.shape[1]-1]:
+        if i>=0:
+            label=1
+            train_label.append(label)
+        else:
+            label=-1
+            train_label.append(label)
+    return train_data,train_label
+
+def get_trainset(data_all,n):
+    '''
+
+    :param dataframe: python数据框名称,如data_all=ts.get_hist_data('600848')得到的data_all
+    :param n:滞后阶数
+    :return:
+    '''
+    data_all.sort_index(inplace=True)
+    data_close = data_all['close']
+    row_data=data_close.diff()[1:]
     data_len=len(row_data)
     train_len=data_len-n
     dataset=np.zeros((train_len,n+1))
