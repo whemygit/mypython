@@ -10,7 +10,7 @@ import knn_forecast as knnf
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
-# data_all=ts.get_hist_data('600848')
+# data_all=ts.get_hist_data('600727')
 
 def knn_get_par(share_code):
     '''
@@ -69,5 +69,8 @@ def knn_fore_next(share_code):
 
 
 if __name__ == '__main__':
-    knn_fore_next('600848')
+    # print data_all
+    knn_fore_next('600727')
+    knn_fore_next('603701')
+
 
