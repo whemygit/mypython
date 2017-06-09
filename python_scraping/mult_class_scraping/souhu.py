@@ -53,11 +53,7 @@ def get_article_content(url):
             print ar_con_str
             article_fw.write(ar_con_str+'\n')
 
-d={'a':'1','b':'2'}
-print d
-print d.get('a')
-print d['b']
 
 
-# if __name__ == '__main__':
-#     get_article_content('http://business.sohu.com/')
+if __name__ == '__main__':
+    get_article_content('http://business.sohu.com/')
