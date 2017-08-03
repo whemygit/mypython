@@ -8,6 +8,7 @@ import operator
 import tushare as ts
 import knn_forecast as knnf
 
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 # data_all=ts.get_hist_data('600727')
