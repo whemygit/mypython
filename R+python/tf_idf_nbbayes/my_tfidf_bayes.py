@@ -12,6 +12,7 @@ from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import classification_report
 import collections
 import json
+from sklearn.externals import joblib
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -58,13 +59,36 @@ class Tfidf_nbbayes_model():
                 self.class_list.extend([self.categroy_dict[corpus]]*len(lines))
 
     def train_test(self):
-        x_train,x_test,y_train,y_test=train_test_split(self.doc_list,self.class_list,test_size=0.2)
+        x_train,x_test,y_train,y_test=train_test_split(self.doc_list,self.class_list,test_size=0.1)
         tfidf_vec=TfidfVectorizer(lowercase=False,decode_error='ignore')
         x_train=tfidf_vec.fit_transform(x_train)
         x_test=tfidf_vec.transform(x_test)
         clf=MultinomialNB().fit(x_train,y_train)
         doc_class_predicted=clf.predict(x_test)
+        # print len(y_test)
+        # print len(doc_class_predicted)
         print np.mean(doc_class_predicted==y_test)
+        joblib.dump(clf,'train_model.m')
+        clf_load=joblib.load('train_model.m')
+        doc_class_predicted_loadmodel=clf_load.predict(x_test)
+        print np.mean(doc_class_predicted_loadmodel==y_test)
+        joblib.dump(tfidf_vec,'tfidf_vec.m')
+
+    def predict_based_model(self):
+        clf_load = joblib.load('train_model.m')
+        tfidf_model_load=joblib.load('tfidf_vec.m')
+        with open(relative_path('corpus/corpuscaijing'),'r') as fr:
+            lines=fr.readlines()
+            for line in lines:
+                test_vec=[]
+                news_content=json.loads(line).get('content')
+                line_seg = self.news_cut_outstop(news_content)
+                line_seg = ' '.join(line_seg)
+                test_vec.append(line_seg)
+                content_vec=tfidf_model_load.transform(test_vec)
+                print clf_load.predict(content_vec)
+                break
+
 
 
 
@@ -73,7 +97,9 @@ if __name__ == '__main__':
     corpus_path=relative_path('corpus')
     stopw_path='D:/gitcode/mypython/R+python/my_news_classify/stopw.txt'
     model=Tfidf_nbbayes_model(corpus_path,stopw_path)
+    model.predict_based_model()
     # print model.class_list
     # print len(model.doc_list)
     # print len(model.class_list)
-    model.train_test()
+    # model.train_test()
+

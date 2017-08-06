@@ -56,11 +56,13 @@ def create_vocablist():
 
 
 if __name__ == '__main__':
-    doc_tfidf_vec=transform_tfidf()
-    # print type(doc_tfidf_vec)
-    print doc_tfidf_vec.shape
+    # doc_tfidf_vec=transform_tfidf()
+    # # print type(doc_tfidf_vec)
+    # print doc_tfidf_vec.shape
 
     # vocabset=create_vocablist()
     # for i,j in enumerate(vocabset):
     #     print i,j
+    a = '天气 晴朗'
+    print list(a)
 
