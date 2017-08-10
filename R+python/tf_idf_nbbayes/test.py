@@ -54,8 +54,33 @@ def create_vocablist():
     return vocab_set
 
 
+def test_corpus():
+    with open('D:/gitcode/mypython/R+python/tf_idf_nbbayes/train_corpus/10fangchan','r') as fr:
+        lines=fr.readlines()
+        print len(lines)
+        for i,line in enumerate(lines):
+            ss=line.strip().split(',')
+            print i,ss[0],ss[1]
+            if ss[1]==" ":
+                print ",2"
+            if ss[0]==" ":
+                print ",1"
+
+
+def rewrite():
+    with open('D:/gitcode/mypython/R+python/tf_idf_nbbayes/train_corpus/minsheng','r') as fr,open('D:/gitcode/mypython/R+python/tf_idf_nbbayes/train_corpus/9minsheng','w') as fw:
+        lines=fr.readlines()
+        for i,line in enumerate(lines):
+            if line!='\n':
+                fw.write(line)
+                print '1'
+
+
+
 
 if __name__ == '__main__':
+    # rewrite()
+    test_corpus()
     # doc_tfidf_vec=transform_tfidf()
     # # print type(doc_tfidf_vec)
     # print doc_tfidf_vec.shape
@@ -63,6 +88,6 @@ if __name__ == '__main__':
     # vocabset=create_vocablist()
     # for i,j in enumerate(vocabset):
     #     print i,j
-    a = '天气 晴朗'
-    print list(a)
+    # a = '天气 晴朗'
+    # print list(a)
 

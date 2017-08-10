@@ -60,7 +60,7 @@ class Tfidf_nbbayes_model():
 
     def train_test(self):
         x_train,x_test,y_train,y_test=train_test_split(self.doc_list,self.class_list,test_size=0.1)
-        tfidf_vec=TfidfVectorizer(lowercase=False,decode_error='ignore',max_features=1000000)
+        tfidf_vec=TfidfVectorizer(lowercase=False,decode_error='ignore',max_features=500000)
         x_train=tfidf_vec.fit_transform(x_train)
         x_test=tfidf_vec.transform(x_test)
         clf=MultinomialNB().fit(x_train,y_train)
@@ -90,16 +90,33 @@ class Tfidf_nbbayes_model():
                 break
 
 
+    def get_train_data_forspark(self):
+        for corpus in self.categroy_dict:
+            with open(relative_path('corpus/'+corpus),'r') as fr,open(relative_path('train_data/'+str(self.categroy_dict[corpus])+corpus),'w') as fw:
+                lines=fr.readlines()
+                for line in lines:
+                    if json.loads(line).get('content'):
+                        line_seg = self.news_cut_outstop(json.loads(line).get('content'))
+                        line_seg = ' '.join(line_seg)
+                        fw.write(str(self.categroy_dict[corpus])+','+line_seg+'\n')
 
+
+    def get_train_data_forspark_other(self):
+            with open(relative_path('corpus/_minsheng'),'r') as fr,open(relative_path('train_corpus/9minsheng'),'w') as fw:
+                lines=fr.readlines()
+                for line in lines:
+                    if json.loads(line).get('content'):
+                        line_seg = self.news_cut_outstop(json.loads(line).get('content'))
+                        line_seg = ' '.join(line_seg)
+                        fw.write(str(9)+','+line_seg+'\n')
 
 
 if __name__ == '__main__':
     corpus_path=relative_path('corpus')
     stopw_path='D:/gitcode/mypython/R+python/my_news_classify/stopw.txt'
     model=Tfidf_nbbayes_model(corpus_path,stopw_path)
-    model.train_test()
+    model.get_train_data_forspark_other()
     # print model.class_list
     # print len(model.doc_list)
     # print len(model.class_list)
     # model.train_test()
-
