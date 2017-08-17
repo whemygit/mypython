@@ -39,15 +39,22 @@ def read_write_data():
     select_sql='''SELECT newsid FROM _news_data_copy WHERE classify_tag=3;'''
     select_sql_r= '''SELECT newsid FROM _news_data_copy WHERE classify_tag=3 limit 10;'''
     res=db.query(select_sql)
+    a_list=[]
     res_r=db.query(select_sql_r)
-    print res_r
-    print res
-    for i in res:
-        print i.get("newsid")
-        for t in res_r:
-            print t.get("newsid")
-            if i.get("newsid")==t.get("newsid"):
-                print 'yes'
+    for i in res_r:
+        print i.get('newsid')
+        a_list.append(i.get('newsid'))
+    for t in res:
+        s=t.get('newsid') in a_list
+        print s
+    # print res_r
+    # print res
+    # for i in res:
+    #     print i.get("newsid")
+    #     for t in res_r:
+    #         print t.get("newsid")
+    #         if i.get("newsid")==t.get("newsid"):
+    #             print 'yes'
 
 
 
