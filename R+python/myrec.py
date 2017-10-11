@@ -94,6 +94,10 @@ class Recommend(object):
 
 
     def item_avarage_rating(self):
+        '''
+        计算每个item的平均评分
+        :return: {'item_id': 2, 'rating_num': 1, 'average': 2.0, 'category_id': 6}
+        '''
         for item_id in self.item_info:
             ratings=list(r['rating'] for r in self.review_for_item(item_id))
             try:
@@ -110,15 +114,30 @@ class Recommend(object):
             }
 
     def top_item_rating(self,n=10):
+        '''
+        前n个平均评价的item
+        :param n:
+        :return:
+        '''
         return heapq.nlargest(n,self.item_avarage_rating(),key=itemgetter('average'))  #itemgetter(1)为排序依据的列索引号
 
 
     def review_for_category(self,category_id):
+        '''
+        给定类的各个评分
+        :param category_id:
+        :return:{'item_id': 3, 'rating_num': 1, 'average': 5.0, 'category_id': 1}
+        {'item_id': 31, 'rating_num': 1, 'average': 4.0, 'category_id': 1}。。。。。。。。。
+        '''
         for review in self.item_avarage_rating():
             if category_id==review['category_id']:
                 yield review
 
     def category_average_rating(self):
+        '''
+        各类的平均评分
+        :return:
+        '''
         for category_id in range(1, 7):
             ratings = list(r['average'] for r in self.review_for_category(category_id))
             try:
@@ -132,10 +151,20 @@ class Recommend(object):
             }
 
     def sort_category_rating(self,n=6):
+        '''
+        前n类的平均评分
+        :param n:
+        :return:
+        '''
         return heapq.nlargest(n,self.category_average_rating(),key=itemgetter('average_c'))
 
     #user_analyse#######################################################################################################
     def user_rating_category(self,user_id):
+        '''
+        特定用户对各类的评分
+        :param user_id: 如user_rating_category(1)
+        :return: {2: 5.0, 4: 3.0, 6: 4.0}
+        '''
         category_rating={}
         for category in range(1,7):
             ratings=0.0
@@ -150,12 +179,20 @@ class Recommend(object):
         return category_rating
 
     def all_user_rating_category(self):
+        '''
+        所有用户对各类的评价
+        :return: {1: {2: 5.0, 4: 3.0, 6: 4.0}, 2: {4: 5.0}, 3: {1: 1.0, 2: 2.0, 4:............}
+        '''
         user_category_rating={}
         for user_id in self.user_info:
             user_category_rating[user_id]=self.user_rating_category(user_id)
         return user_category_rating
 
     def user_prefer(self):
+        '''
+        各位用户为键，各类评分排列为值的字典
+        :return: {1: [(2, 5.0), (6, 4.0), (4, 3.0)], 2: [(4, 5.0)], 3: [(4, 5.0), (2,...........}
+        '''
         prefer={}
         for user_id in self.all_user_rating_category():
             u_prefer=self.all_user_rating_category()[user_id]
@@ -166,10 +203,11 @@ class Recommend(object):
 
     def top_user_pref(self,user_id,n=2):
         '''
-        返回user_id用户最喜欢的前n类，并且包含没类评分占比权重
+        返回user_id用户最喜欢的前n类，并且包含每类评分占比权重，model.top_user_pref(1,2)
         :param user_id:
         :param n:
-        :return:
+        :return:(1, 2, 0.5555555555555556)
+                (1, 6, 0.4444444444444444)
         '''
         pref=self.user_prefer()[user_id]
         sum_rating=0.0
@@ -190,15 +228,31 @@ if __name__ == '__main__':
     udata=relative_path('my_ratings')
     itdata=relative_path('my_items')
     model=Recommend(udata,itdata)
+    print model.user_info
+    print model.item_info
+    print model.user_info.items()
+    print model.user_info.values()
+    # for i in model.review_for_item(18):
+    #     print i
+    # for i in model.item_avarage_rating():
+    #     print i
+    # for i in model.review_for_category(1):
+    #     print i
+    # print model.sort_category_rating(6)
+    print model.user_rating_category(1)
+    print model.all_user_rating_category()
+    print model.user_prefer()
+    for i in model.top_user_pref(1,2):
+        print i
     # for i in model.user_info.items():
     #     print i
     # for i in model.item_info.items():
     #     print i
     # print model.user_rating_category(100)
-    print model.all_user_rating_category()
-    print model.user_prefer()
-    for i in model.top_user_pref(1):
-        print i
+    # print model.all_user_rating_category()
+    # print model.user_prefer()
+    # for i in model.top_user_pref(1):
+    #     print i
     #
     # for i in model.reviews_for_user_category(100):
     #     print i
