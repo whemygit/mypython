@@ -33,8 +33,8 @@ def weiboClient():
     APP_SECRET = '73caaf506d849ece3fd319ee099e37eb' # app secret
     CALLBACK_URL = 'https://api.weibo.com/oauth2/default.html' # callback url
     AUTH_URL = 'https://api.weibo.com/oauth2/authorize'
-    USERID = 'w4'
-    PASSWD = 'w' #your pw
+    USERID = 'whemy@sina.com'
+    PASSWD = 'wwwmmm555432' #your pw
     client = Client(api_key=APP_KEY,api_secret=APP_SECRET,redirect_uri=CALLBACK_URL)
     referer_url = client.authorize_url
     print "referer url is : %s" % referer_url
@@ -49,12 +49,13 @@ def weiboClient():
             "action": "submit",
             "response_type": "code",
                }
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:11.0) Gecko/20100101 Firefox/11.0",
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0",
                "Host": "api.weibo.com",
                "Referer": referer_url
                }
     req  = urllib2.Request(
-       url = AUTH_URL,
+       # url = referer_url,
+       url=AUTH_URL,
        data = urllib.urlencode(postdata),
        headers = headers
        )
@@ -62,10 +63,10 @@ def weiboClient():
         resp = urllib2.urlopen(req)
         print "callback url is : %s" % resp.geturl()
 
-        rr=requests.post(referer_url)
-        print 'rr:',rr.text
-        # code = resp.geturl()[-32:]
-        code = '3f905ea7699d1db3d64b35fb64184d6d'
+        # rr=requests.post(referer_url)
+        # print 'rr:',rr.text
+        code = resp.geturl()[-32:]
+        # code = '3f905ea7699d1db3d64b35fb64184d6d'
         print "code is : %s" %  code
         # 'https://api.weibo.com/oauth2/authorize?redirect_uri=https%3A%2F%2Fapi.weibo.com%2Foauth2%2Fdefault.html&client_id=2149070838'
     except Exception, e:
