@@ -29,7 +29,7 @@ def load_data(path):
 
         comments=[int(json.loads(line.strip()).get('comment').split('条')[0].split('(')[1]) if json.loads(line.strip()).get('comment')!='(暂无点评)' else int(0) for line in lines]
         rankings = [0 if json.loads(line.strip())['ranking'] == '' else int(re.findall(r'\d+',json.loads(line.strip())['ranking'])[0]) for line in lines]
-        stars=[0 if json.loads(line.strip())['ranking']=='' else int(json.loads(line.strip())['star'].split(':')[1].strip('%;')) for line in lines]
+        stars=[0 if json.loads(line.strip())['star']=='' else int(json.loads(line.strip())['star'].split(':')[1].strip('%;')) for line in lines]
         names=[json.loads(line.strip())['name'] for line in lines]
         levels=[len(re.findall(r'\w',str(json.loads(line.strip())['level']))) for line in lines]
         prices=[int(re.findall(r'\d+',str(json.loads(line.strip())['price']))[0]) if re.findall(r'\d+',str(json.loads(line.strip())['price'])) else 0 for line in lines]
@@ -154,14 +154,15 @@ class trip_model(object):
 if __name__ == '__main__':
     data_path = 'data_xiecheng.json'
     model=trip_model(data_path)
-    print model.data.shape
-    # print model.value_0_table
-    # model.hist_counts_graph()
-    # model.bar_counts_graph()
-    # print model.most_popular
-    # model.prices_description()
-    print model.market_price
-    print model.ctrip_price
+    # print model.data.shape
+    # # print model.value_0_table
+    # # model.hist_counts_graph()
+    # # model.bar_counts_graph()
+    # # print model.most_popular
+    # # model.prices_description()
+    # print model.market_price
+    # print model.ctrip_price
+    print model.data['addresses']
 
 
 
