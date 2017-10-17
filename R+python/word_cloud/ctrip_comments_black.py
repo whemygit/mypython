@@ -51,20 +51,18 @@ def generate_wordcloud():
         if comment_seg_dict[place]!='':
             print place
             minister_color = imread('mask_pic.jpg')
-            #white
-            # wordcloud = WordCloud(background_color='white',font_path='C:\Windows\Fonts\STZHONGS.TTF',
-            #                       mask=minister_color,max_words=50).generate(comment_seg_dict[place])
-
-            #black
-            wordcloud = WordCloud(font_path='C:\Windows\Fonts\STZHONGS.TTF',
-                                  mask=minister_color, max_words=50).generate(comment_seg_dict[place])
+            try:
+                wordcloud = WordCloud(font_path='C:\Windows\Fonts\STZHONGS.TTF',
+                                      mask=minister_color,max_words=50).generate(comment_seg_dict[place])
+            except:
+                continue
             image_colors=ImageColorGenerator(minister_color)
             plt.imshow(wordcloud)
             plt.axis('off')
             plt.imshow(wordcloud.recolor(color_func=image_colors))
             plt.axis('off')
             try:
-                plt.savefig('pic_with_mask/'+place+'.jpg')
+                plt.savefig('pic_with_mask_black/'+place+'.jpg')
             except:
                 print place,'fail to save picture'
                 continue
@@ -72,8 +70,4 @@ def generate_wordcloud():
 
 
 if __name__ == '__main__':
-    comment_seg_dict=load_comments()
-    # places=[i for i in comment_seg_dict]
-    # print len(places)
-    print comment_seg_dict[u'故宫']
-    # generate_wordcloud()
+    generate_wordcloud()

@@ -155,14 +155,14 @@ if __name__ == '__main__':
     data_path = 'data_xiecheng.json'
     model=trip_model(data_path)
     # print model.data.shape
-    # # print model.value_0_table
+    print model.value_0_table
     # # model.hist_counts_graph()
     # # model.bar_counts_graph()
-    # # print model.most_popular
+    print model.most_popular
     # # model.prices_description()
     # print model.market_price
     # print model.ctrip_price
-    print model.data['addresses']
+    # print model.data['addresses']
 
 
 
