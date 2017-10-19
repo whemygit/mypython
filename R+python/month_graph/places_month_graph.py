@@ -86,7 +86,7 @@ def generate_graph_times():
     for k,v in place__percent_dict.items():
         plt.figure()
         # findSystemFonts(fontpaths='C:\Windows\Fonts\STZHONGS.TTF')
-        plt.bar(v.keys(),v.values(),color='darkblue',edgecolor='grey')
+        plt.bar(v.keys(),v.values(),color='darkred',edgecolor='grey')
         plt.title(k)
         plt.xticks([1,2,3,4,5,6,7,8,9,10,11,12],
                     [r'$1$',r'$2$',r'$3$',r'$4$',r'$5$',r'$6$',r'$7$',r'$8$',r'$9$',r'$10$',r'$11$',r'$12$'])
@@ -96,7 +96,7 @@ def generate_graph_times():
         try:
             plt.savefig('month_times_bar/'+k+'.jpg')
         except IOError:
-            plt.savefig('month_times_bar'+k.split('/')[0]+k.split('/')[1]+'.jpg')
+            plt.savefig('month_times_bar/'+k.split('/')[0]+k.split('/')[1]+'.jpg')
         plt.close()
         print k
         # break
