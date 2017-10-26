@@ -158,10 +158,9 @@ class trip_model(object):
 if __name__ == '__main__':
     data_path = 'data_xiecheng.json'
     model=trip_model(data_path)
-    # print model.comment_address_df.shape
-    # sort_df=model.comment_address_df.sort_values(by='comments',ascending=False)
-    # print sort_df[sort_df['comments']>=1000]
-    model.data.to_csv('beijing_ctrip')
+    print model.comment_address_df.shape
+    sort_df=model.comment_address_df.sort_values(by='comments',ascending=False)
+    print sort_df[sort_df['comments']>=1000]
     # sort_df.to_csv('comments_num_sort.csv')
     # sort_seg_df=seg_df.sort_values(by='comments',ascending=False)
     # sort_seg_df[sort_seg_df['comments']>1000].to_csv('comment_1000')

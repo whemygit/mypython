@@ -5,6 +5,10 @@ import json
 import pickle
 from matplotlib import pyplot as plt
 
+import networkx as nx
+import pylab
+import numpy as np
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -13,12 +17,12 @@ def load_twitter_data():
         load_dict=json.load(fr)
         return load_dict
 
-def key_elements_get(twitterdata):
-    # print '标识符:',load_data[1].get('id')
-    # print '文本内容:',load_data[0].get('text')
-    print 'entities:',load_data[0].get('entities')
-    for i in load_data[0].get('entities').get('hashtags'):
-        print i
+# def key_elements_get(twitterdata):
+#     # print '标识符:',load_data[1].get('id')
+#     # print '文本内容:',load_data[0].get('text')
+#     print 'entities:',load_data[0].get('entities')
+#     for i in load_data[0].get('entities').get('hashtags'):
+#         print i
     # print '实体:',load_data[1].get('entities')
     # print '收藏次数',load_data[1].get('favorite_count')
     # print '转推次数', load_data[1].get('retweet_count')
@@ -92,8 +96,27 @@ def entities_get(twitterdata,n=1):
     plt.show()
 
 
+def netx_test():
+    row=np.array([0,0,0,1,2,3,6])
+    col=np.array([1,2,3,4,5,6,7])
+
+    G=nx.DiGraph()
+    # print np.size(col)
+    for i in range(0,np.size(col)+1):
+        G.add_node(i)
+    for i in range(np.size(row)):
+        G.add_edges_from([(row[i],col[i])])
+
+    pos=nx.shell_layout(G)
+    nx.draw(G,pos,with_labels=True,node_color='white',edge_color='red',node_size=400,alpha=0.5)
+    pylab.title('self_define_net',fontsize=15)
+    pylab.show()
+
+
+
 
 if __name__ == '__main__':
-    load_data=load_twitter_data()
+    # load_data=load_twitter_data()
     # key_elements_get(load_data)
-    entities_get(load_data)
+    # entities_get(load_data)
+    netx_test()
