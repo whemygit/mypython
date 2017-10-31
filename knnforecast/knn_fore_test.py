@@ -71,7 +71,8 @@ def knn_fore_next(share_code):
 
 if __name__ == '__main__':
     # print data_all
-    knn_fore_next('600727')
-    knn_fore_next('603701')
+    # knn_fore_next('600727')
+    # knn_fore_next('603701')
+    print ts.get_cpi()
 
 
