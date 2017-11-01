@@ -67,17 +67,22 @@ def gensim_test():
     '15同居多年未办理结婚登记，是否可以向法院起诉要求离婚'
     ]
 
+    raw_documents=[
+        '财经：因乐视网IPO财务造假发审委多人被抓 最终名单超过10人',
+        '因乐视网IPO财务造假发审委多人被抓 最终名单超10人'
+    ]
+
     texts=[[word for word in jieba.cut(document, cut_all=True)] for document in raw_documents]
     # print texts
     # print len(texts)
     dictionary = corpora.Dictionary(texts)
     # print dictionary
     # print len(dictionary)
-    # for i,j in dictionary.items():
-    #     print i,j
+    for i,j in dictionary.items():
+        print i,j
     corpus=[dictionary.doc2bow(text) for text in texts]
-    # for i in corpus:
-    #     print i
+    for i in corpus:
+        print i
 
     tfidf=models.TfidfModel(corpus)
     corpus_tfidf=tfidf[corpus]
@@ -85,10 +90,10 @@ def gensim_test():
         print i
 
     similarity=similarities.Similarity('Similarity-tfidf-index',corpus_tfidf,num_features=600)
-    # for i in similarity:
-    #     print i
+    for i in similarity:
+        print i
 
-    test_corpus='15是否可以向法院起诉要求离婚，同居多年未办理结婚登记'
+    test_corpus='中国新闻网,因乐视网IPO财务造假发审委多人被抓 最终名单超10人'
     test_corpus_1 = dictionary.doc2bow(jieba.cut(test_corpus, cut_all=True))
     print test_corpus_1
     vec_tfidf = tfidf[test_corpus_1]
