@@ -69,7 +69,8 @@ def gensim_test():
 
     raw_documents=[
         '财经：因乐视网IPO财务造假发审委多人被抓 最终名单超过10人',
-        '因乐视网IPO财务造假发审委多人被抓 最终名单超10人'
+        '...',
+        '财经：因乐视网IPO财务造假发审委多人被抓 最终名单超过10人'
     ]
 
     texts=[[word for word in jieba.cut(document, cut_all=True)] for document in raw_documents]
@@ -93,12 +94,12 @@ def gensim_test():
     for i in similarity:
         print i
 
-    test_corpus='中国新闻网,因乐视网IPO财务造假发审委多人被抓 最终名单超10人'
-    test_corpus_1 = dictionary.doc2bow(jieba.cut(test_corpus, cut_all=True))
-    print test_corpus_1
-    vec_tfidf = tfidf[test_corpus_1]
-    print vec_tfidf
-    print similarity[vec_tfidf]
+    # test_corpus='中国新闻网,因乐视网IPO财务造假发审委多人被抓 最终名单超10人'
+    # test_corpus_1 = dictionary.doc2bow(jieba.cut(test_corpus, cut_all=True))
+    # print test_corpus_1
+    # vec_tfidf = tfidf[test_corpus_1]
+    # print vec_tfidf
+    # print similarity[vec_tfidf]
 
     # print similarity[corpus_tfidf[0]]
     # flag=False
