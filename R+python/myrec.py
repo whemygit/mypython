@@ -228,41 +228,30 @@ if __name__ == '__main__':
     udata=relative_path('my_ratings')
     itdata=relative_path('my_items')
     model=Recommend(udata,itdata)
-    print model.user_info
-    print model.item_info
-    print model.user_info.items()
-    print model.user_info.values()
+    # print model.user_info
+    # print model.item_info
+    # print model.user_info.items()
+    # print model.user_info.values()
     # for i in model.review_for_item(18):
     #     print i
     # for i in model.item_avarage_rating():
     #     print i
+    # for i in model.top_item_rating(10):
+    #     print i
     # for i in model.review_for_category(1):
     #     print i
     # print model.sort_category_rating(6)
-    print model.user_rating_category(1)
-    print model.all_user_rating_category()
-    print model.user_prefer()
-    for i in model.top_user_pref(1,2):
-        print i
+    # print model.user_rating_category(1)
+    # for i,j in model.all_user_rating_category().items():
+    #     print i,j
+    print model.user_prefer()[1]
+    # for i in model.top_user_pref(1,2):
+    #     print i
     # for i in model.user_info.items():
     #     print i
     # for i in model.item_info.items():
     #     print i
     # print model.user_rating_category(100)
     # print model.all_user_rating_category()
-    # print model.user_prefer()
-    # for i in model.top_user_pref(1):
-    #     print i
-    #
-    # for i in model.reviews_for_user_category(100):
-    #     print i
-
-    # for i in model.item_avarage_rating():
-    #     print i
-    # print model.top_item_rating()
-    # for i in model.review_for_category(5):
-    #     print i
-    # model.category_average_rating()
-    # for i in model.category_average_rating():
-    #     print i
-    # print model.sort_category_rating()
+    for i in model.top_user_pref(1):
+        print i

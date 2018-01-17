@@ -12,7 +12,7 @@ def getlnglat():
     output='json'
     ak='Qk77GopeGV7dPCPAAHpLHG0sl87pGbcV'
     # add='北京市海淀区上地十街10号'
-    add = '伦敦'
+    add = 'null'
     uri=url+'?'+'address='+add+'&output=' + output + '&ak=' + ak
     resp=requests.get(uri)
     res=resp.text

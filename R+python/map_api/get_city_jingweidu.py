@@ -27,6 +27,8 @@ def getlnglat():
 
 
 if __name__ == '__main__':
-    with open('city_lng_lat','w') as fw:
-        for i,j in getlnglat():
-            fw.write(i+','+str(j['lng'])+','+str(j['lat'])+'\n')
+    for i in add_list:
+        print i
+    # with open('city_lng_lat','w') as fw:
+    #     for i,j in getlnglat():
+    #         fw.write(i+','+str(j['lng'])+','+str(j['lat'])+'\n')
