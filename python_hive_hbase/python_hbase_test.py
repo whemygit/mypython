@@ -43,12 +43,12 @@ table = "example"
 
 put = TPut(row="row1", columnValues=[TColumnValue(family="family1",qualifier="qualifier1",value="value1")])
 print "Putting:", put
-# client.put(table, put)
-#
-# get = TGet(row="row1")
-# print "Getting:", get
-# result = client.get(table, get)
-#
-# print "Result:", result
+client.put(table, put)
+
+get = TGet(row="row1")
+print "Getting:", get
+result = client.get(table, get)
+
+print "Result:", result
 
 transport.close()
